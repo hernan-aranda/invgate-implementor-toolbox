@@ -34,7 +34,7 @@ To create a valid environment for this collections, follow this steps:
 
 ### 3. Import the collection needed
 
-Navigate through this repo and download the .json file of the collection. An easy way to do that, is using the [file finder](../../find/main) of GitHub, then left click on the file and "Save link as...". Select the destination folder, an save the collection. After that, open Postman and import the collection there (you can drag-and-drop it).
+Navigate through this repo and download the .json file of the collection. An easy way to do that, is using the [file finder](../../find/main) of GitHub, then open the file and left click on the "Raw" button and "Save link as...". Select the destination folder, an save the collection. After that, open Postman and import the collection there (you can drag-and-drop it).
 
 
 ### 4. Follow the detailed steps for that collection (found in it's documentation)
