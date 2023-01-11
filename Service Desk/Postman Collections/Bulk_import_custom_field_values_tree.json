@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "4b15680d-0868-4bac-a17e-651d0760b51b",
+		"name": "[SD] Bulk import custom field values (tree)",
+		"description": "This collection will import values from a .csv to a tree type custom field\n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Template\n\n| **Column** | **Description** |\n| --- | --- |\n| itemName | Required. Name of the list item to be created. |\n| itemKey | Optional, alphanumeric and unique. Key of the item you'll create. It's only needed if this item is a branch. If it's a leave, just leave it empty. |\n| itemParentKey | Optional, alphanumeric. Key of the parent of this item. It's only needed if this item is not a root level item. |\n\nSource: [https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=1432041961](https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=1432041961)\n\n# Execution\n\n1. Create tree type custom field and get the ID\n2. Set and select the enviroment, or replace the enviroment variables with your constants\n3. Set the collection variable \"_fieldId_\" with the the custom field ID\n4. Create the .csv file. Make sure that your rows are ordered by depth\n5. Run the collection using the .csv file\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14766098"
+	},
+	"item": [
+		{
+			"name": "Get parent hash",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json(); // Retrieve response\r",
+							"let itemToFind = pm.iterationData.get(\"itemParentKey\"); // Retrieve itemParentKey from .csv\r",
+							"\r",
+							"/**\r",
+							" * @summary Callback function, we use this to map the tree and create a list of items. Is easier to get the hash by it's key using a list\r",
+							" * @param item An item from the tree we're mapping\r",
+							" * @param flatList An array containing the result list\r",
+							" */\r",
+							"let flatTree = ( item, flatList ) => { \r",
+							"    flatList.push( { hash: item.hash, name: item.name, key: item.key } );\r",
+							"    if ( item.children ) {\r",
+							"        Object.values( item.children ).map( item => flatTree( item, flatList ) );\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"if( itemToFind !== '' ) {\r",
+							"\r",
+							"    // We flat the tree to search on it\r",
+							"    let flatList = [];\r",
+							"    responseJson.map( item => flatTree( item, flatList ) );\r",
+							"\r",
+							"    // We get the hash of an item by it's key\r",
+							"    let itemFound = flatList.find( item => item.key === itemToFind).hash;\r",
+							"    pm.collectionVariables.set(\"recovered_parentHash\", itemFound);\r",
+							"\r",
+							"} else {\r",
+							"\r",
+							"    // If there isn't a itemParentKey, then wipe recovered_parentHash collection variable\r",
+							"    pm.collectionVariables.set(\"recovered_parentHash\", '');\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.tree?uid={{fieldId}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"cf.field.options.tree"
+					],
+					"query": [
+						{
+							"key": "uid",
+							"value": "{{fieldId}}",
+							"description": "Constant. Set this fieldId in the Collection Variables tab"
+						}
+					]
+				},
+				"description": "Get the current list of options. There's a test script that handles the response and retrieves the reference to the parent item we are going to create next.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionstree-GET](https://releases.invgate.com/service-desk/api/#cffieldoptionstree-GET)"
+			},
+			"response": []
+		},
+		{
+			"name": "Create item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"if ( pm.collectionVariables.get(\"recovered_parentHash\") === '' ) {\r",
+							"    pm.request.url.query.remove(\"parent_hash\");\r",
+							"}\r",
+							"\r",
+							"if ( pm.iterationData.get(\"itemKey\") === '' ) {\r",
+							"    pm.request.url.query.remove(\"key\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.tree?name={{itemName}}&parent_hash={{recovered_parentHash}}&key={{itemKey}}&uid={{fieldId}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"cf.field.options.tree"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{itemName}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "parent_hash",
+							"value": "{{recovered_parentHash}}",
+							"description": "Variable. Atomatically retrieved from a previous request"
+						},
+						{
+							"key": "key",
+							"value": "{{itemKey}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "uid",
+							"value": "{{fieldId}}",
+							"description": "Constant. Set this fieldId in the Collection Variables tab"
+						}
+					]
+				},
+				"description": "Creates the item in the tree.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionstree-POST](https://releases.invgate.com/service-desk/api/#cffieldoptionstree-POST)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{SD API Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{SD API User}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "fieldId",
+			"value": ""
+		},
+		{
+			"key": "recovered_parentHash",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

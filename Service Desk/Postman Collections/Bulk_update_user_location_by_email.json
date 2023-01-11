@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "1b4e88d0-a52a-4385-9541-03be1a173ffc",
+		"name": "[SD] Bulk update user location by email",
+		"description": "This collection will update the user locations by it's email from a .csv\n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Template\n\n| **Column** | **Description** |\n| --- | --- |\n| userEmail | Required. Email of the user that will be updated. |\n| locationId | Required. ID of the location where the user will be included. Only one location per row. Multiple rows for the same user are valid. |\n\nSource: [https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=919297639](https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=919297639)\n\n# Execution\n\n1. Set and select the enviroment, or replace the enviroment variables with your constants\n2. Create the .csv file. Make sure that your rows are ordered by depth\n3. Run the collection using the .csv file\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14766098"
+	},
+	"item": [
+		{
+			"name": "Get user id by email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json(); // Retrieve response\r",
+							"pm.collectionVariables.set(\"recovered_userId\", responseJson.id); // We get the id of the user\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/user.by?email={{userEmail}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"user.by"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{userEmail}}",
+							"description": "Variable. You get this value from de .csv"
+						}
+					]
+				},
+				"description": "Retrieves the id of a user by it's email.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#userby-GET](https://desktop.postman.com/?desktopVersion=10.7.0&userId=14766098&teamId=0)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update user location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations.users?users[]={{recovered_userId}}&id={{locationId}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"locations.users"
+					],
+					"query": [
+						{
+							"key": "users[]",
+							"value": "{{recovered_userId}}",
+							"description": "Variable. Atomatically retrieved from a previous request"
+						},
+						{
+							"key": "id",
+							"value": "{{locationId}}",
+							"description": "Variable. You get this value from de .csv"
+						}
+					]
+				},
+				"description": "Makes the user a member of this location.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locationsusers-POST](https://releases.invgate.com/service-desk/api/#locationsusers-POST)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{SD API Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{SD API User}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "recovered_userId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

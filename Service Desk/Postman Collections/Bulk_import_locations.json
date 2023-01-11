@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "c1380f0b-943a-4d3d-bb09-0d81affcc45a",
+		"name": "[SD] Bulk import locations",
+		"description": "This collection will import locations from a .csv\n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Template\n\n| **Column** | **Description** |\n| --- | --- |\n| locationName | Required. Name of the location to be created. |\n| locationParent | Optional. Name of the parent location. It's only needed if this location is not a root level location. |\n\nSource: [https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=1944844226](https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=1944844226)\n\n# Execution\n\n1. Set and select the enviroment, or replace the enviroment variables with your constants\n2. Create the .csv file. Make sure that your rows are ordered by depth\n3. Run the collection using the .csv file\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14766098"
+	},
+	"item": [
+		{
+			"name": "Get parent location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json(); // Retrieve response\r",
+							"let locationToFind = pm.iterationData.get(\"locationParent\"); // Retrieve locationParent from .csv\r",
+							"\r",
+							"if( locationToFind !== '' ) {\r",
+							"\r",
+							"    // We get the id of an location by it's name\r",
+							"    let locationFound = responseJson.find( item => item.name === locationToFind ).id;\r",
+							"    pm.collectionVariables.set(\"recovered_parentId\", locationFound);\r",
+							"\r",
+							"} else {\r",
+							"\r",
+							"    // If there isn't a locationParent, then wipe recovered_parentId collection variable\r",
+							"    pm.collectionVariables.set(\"recovered_parentId\", '');\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"locations"
+					]
+				},
+				"description": "Get the current list of locations. There's a test script that handles the response and retrieves the reference to the parent item we are going to create next.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locations-GET](https://releases.invgate.com/service-desk/api/#locations-GET)"
+			},
+			"response": []
+		},
+		{
+			"name": "Create location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"if ( pm.collectionVariables.get(\"recovered_parentId\") === '' ) {\r",
+							"    pm.request.url.query.remove(\"parent_id\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations?name={{locationName}}&parent_id={{recovered_parentId}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"locations"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{locationName}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "parent_id",
+							"value": "{{recovered_parentId}}",
+							"description": "Variable. Atomatically retrieved from a previous request"
+						}
+					]
+				},
+				"description": "Creates a location.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locations-POST](https://releases.invgate.com/service-desk/api/#locations-POST)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{SD API Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{SD API User}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "recovered_parentId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

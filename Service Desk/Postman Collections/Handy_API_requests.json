@@ -1,0 +1,2747 @@
+{
+	"info": {
+		"_postman_id": "5b365eb3-f353-49c3-965f-cc64b2077a8e",
+		"name": "[SD] Handy API requests",
+		"description": "This collection contains a set of handful requests ready to use. **Don't use the runner** for this collection, just execute the request you need. Some notes:\n\n- Required fields are identified by a comment on the description field\n- Not required fields are disabled by default\n- Array parameters have brackets \"_\\[ \\]_\" after their name. If you have multiple values, create a new parameter with the exact same name and brackets.\n- If the request can handle attachments, you'll find the parameter in \"_Body_\" tab\n    \n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Execution\n\n1. Set and select the enviroment, or replace the enviroment variables with your constants\n2. Complete the values of the parameters\n3. Execute the request\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14766098"
+	},
+	"item": [
+		{
+			"name": "Breaking News",
+			"item": [
+				{
+					"name": "/breakingnews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/breakingnews?title=&type_id=&body=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"breakingnews"
+							],
+							"query": [
+								{
+									"key": "affected_helpdesk_ids[]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "affected_group_ids[]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "type_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "resolution_time",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "body",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "creator_id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Creates Breaking News.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#breakingnews-POST](https://releases.invgate.com/service-desk/api/#breakingnews-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/breakingnews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/breakingnews?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"breakingnews"
+							],
+							"query": [
+								{
+									"key": "date_format",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Returns the requested Breaking News.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#breakingnews-GET](https://releases.invgate.com/service-desk/api/#breakingnews-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/breakingnews.all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/breakingnews.all",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"breakingnews.all"
+							],
+							"query": [
+								{
+									"key": "date_format",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the Breaking News.\n\nEndpoint doc.: [](https://releases.invgate.com/service-desk/api/#breakingnews-GET)[https://releases.invgate.com/service-desk/api/#breakingnewsall-GET](https://releases.invgate.com/service-desk/api/#breakingnewsall-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/breakingnews.attributes.status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/breakingnews.attributes.status",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"breakingnews.attributes.status"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the possible status for the Breaking News' and their descriptions. If an ID is provided, only one will be listed.\n\nEndpoint doc.: [](https://releases.invgate.com/service-desk/api/#breakingnews-GET)[https://releases.invgate.com/service-desk/api/#breakingnewsattributesstatus-GET](https://releases.invgate.com/service-desk/api/#breakingnewsattributesstatus-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/breakingnews.attributes.type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/breakingnews.attributes.type",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"breakingnews.attributes.type"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the importance types of the Breaking News. If an ID its provided, only one will be listed.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#breakingnewsattributestype-GET](https://releases.invgate.com/service-desk/api/#breakingnewsattributestype-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Breaking News feature."
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "/categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/categories",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the categories, or the required one if an ID is provided.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#categories-GET](https://releases.invgate.com/service-desk/api/#categories-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Categories."
+		},
+		{
+			"name": "Custom Fields",
+			"item": [
+				{
+					"name": "/cf.field.options.list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.list?type=key-value&key_values[]=&uid=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.field.options.list"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "key-value",
+									"description": "Required"
+								},
+								{
+									"key": "key_values[]",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "uid",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Configures list type custom fields. If the key already exists, the previous value will be overwritten.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionslist-POST](https://releases.invgate.com/service-desk/api/#cffieldoptionslist-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/cf.field.options.list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.list?uid=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.field.options.list"
+							],
+							"query": [
+								{
+									"key": "uid",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Lists the configuration of custom fields that are a list type.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionslist-GET](https://releases.invgate.com/service-desk/api/#cffieldoptionslist-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/cf.field.options.tree",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.tree?name=&uid=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.field.options.tree"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "parent_hash",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "key",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "uid",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Adds configuration to the tree type custom fields. If the key already exists, the previous value will be overwritten.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionstree-POST](https://releases.invgate.com/service-desk/api/#cffieldoptionstree-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/cf.field.options.tree",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.tree?uid=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.field.options.tree"
+							],
+							"query": [
+								{
+									"key": "uid",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Returns the structure of the tree type custom fields options. The hash is system internal, but it is used to make modifications.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionstree-GET](https://releases.invgate.com/service-desk/api/#cffieldoptionstree-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/cf.fields.all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.fields.all",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.fields.all"
+							]
+						},
+						"description": "Returns a list of all the active custom fields.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldsall-GET](https://releases.invgate.com/service-desk/api/#cffieldsall-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/cf.fields.by.category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.fields.by.category?category_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.fields.by.category"
+							],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Returns a list of the custom fields related to a category ID.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldsbycategory-GET](https://releases.invgate.com/service-desk/api/#cffieldsbycategory-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/cf.fields.types",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.fields.types",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"cf.fields.types"
+							]
+						},
+						"description": "Returns a list of all the supported custom field types, with a brief description of the data type for each field.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldstypes-GET](https://releases.invgate.com/service-desk/api/#cffieldstypes-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Custom Fields."
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "/companies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/companies?name=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"companies"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Creates a new company.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#companies-POST](https://releases.invgate.com/service-desk/api/#companies-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/companies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/companies",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"companies"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Returns all the active companies.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#companies-GET](https://releases.invgate.com/service-desk/api/#companies-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/companies.users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/companies.users?users[]=&id",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"companies.users"
+							],
+							"query": [
+								{
+									"key": "users[]",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "id",
+									"value": null,
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Adds a user to a company. If the company contains groups, the users will also be added to those groups.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#companiesusers-POST](https://releases.invgate.com/service-desk/api/#companiesusers-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/companies.users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/companies.users?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"companies.users"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Lists the members of a company.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#companiesusers-GET](https://releases.invgate.com/service-desk/api/#companiesusers-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Companies."
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "/groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/groups?name=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"groups"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Creates a group of users.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#groups-POST](https://releases.invgate.com/service-desk/api/#groups-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/groups",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"groups"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Returns all active groups of users, or one in particular if an ID or name is provided.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#groups-GET](https://releases.invgate.com/service-desk/api/#groups-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/groups.users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/groups.users?users[]=&id",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"groups.users"
+							],
+							"query": [
+								{
+									"key": "users[]",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "id",
+									"value": null,
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Adds a user to a group.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#groupsusers-POST](https://releases.invgate.com/service-desk/api/#groupsusers-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/groups.users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/groups.users?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"groups.users"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Lists the members of a group.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#groupsusers-GET](https://releases.invgate.com/service-desk/api/#groupsusers-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Groups."
+		},
+		{
+			"name": "Helpdesks",
+			"item": [
+				{
+					"name": "/helpdesks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/helpdesks",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"helpdesks"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "include_deleted",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Returns all the active help desks, or one in particular.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#helpdesks-GET](https://releases.invgate.com/service-desk/api/#helpdesks-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/helpdesksandlevels",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/helpdesksandlevels",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"helpdesksandlevels"
+							],
+							"query": [
+								{
+									"key": "include_deleted",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Returns all the help desks and levels, or one in particular.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#helpdesksandlevels-GET](https://releases.invgate.com/service-desk/api/#helpdesksandlevels-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Helpdesks."
+		},
+		{
+			"name": "Incident",
+			"item": [
+				{
+					"name": "/incident",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachments[]",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident?description=&category_id=&priority_id=&customer_id=&type_id=&title=&creator_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "related_to[]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "",
+									"description": "Required (most cases)"
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "priority_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "customer_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "source_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "date",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "creator_id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Creates a request.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incident-POST](https://releases.invgate.com/service-desk/api/#incident-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachments[]",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "reassignment",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "source_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "customer_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "priority_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "location_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "date_format",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Change attributes of a request.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incident-PUT](https://releases.invgate.com/service-desk/api/#incident-PUT)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "date_format",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "comments",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Returns the information of the given request.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incident-GET](https://releases.invgate.com/service-desk/api/#incident-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.attributes.priority",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.attributes.priority",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.attributes.priority"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the priorities, or only one if an ID its provided.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentattributespriority-GET](https://releases.invgate.com/service-desk/api/#incidentattributespriority-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.attributes.source",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.attributes.source",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.attributes.source"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the sources. If an ID is provided, only the one that matches the specified ID will be listed.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentattributessource-GET](https://releases.invgate.com/service-desk/api/#incidentattributessource-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.attributes.status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.attributes.status",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.attributes.status"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the status. If an ID is provided, only the one that matches the specified ID will be listed.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentattributesstatus-GET](https://releases.invgate.com/service-desk/api/#incidentattributesstatus-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.attributes.type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.attributes.type",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.attributes.type"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Lists all the types. If an ID is provided, only the one that matches the specified ID will be listed.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentattributestype-GET](https://releases.invgate.com/service-desk/api/#incidentattributestype-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachments[]",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.comment?comment=&author_id=&request_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.comment"
+							],
+							"query": [
+								{
+									"key": "comment",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "author_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "is_solution",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "request_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "customer_visible",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Adds a reply to a request.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentcomment-POST](https://releases.invgate.com/service-desk/api/#incidentcomment-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.comment?request_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.comment"
+							],
+							"query": [
+								{
+									"key": "date_format",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "is_solution",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "request_id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Gets the replies from a given request.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentcomment-GET](https://releases.invgate.com/service-desk/api/#incidentcomment-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.custom_field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "custom_field_uid",
+									"value": "",
+									"description": "Required",
+									"type": "text"
+								},
+								{
+									"key": "author_id",
+									"value": "",
+									"description": "Required",
+									"type": "text"
+								},
+								{
+									"key": "values[]",
+									"value": "",
+									"description": "Required",
+									"type": "text"
+								},
+								{
+									"key": "request_id",
+									"value": "",
+									"description": "Required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.custom_field",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.custom_field"
+							]
+						},
+						"description": "Creates values for a custom field from a request. Different types of data can be sent in the values variable. No value (empty string) means erase value. When sending files, the name of the file has to be in the values array (including its extension), and the file(s) itself should be sent in the body of the request.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentcustom_field-POST](https://releases.invgate.com/service-desk/api/#incidentcustom_field-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/incident.relate.ci.by.keyword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/incident.relate.ci.by.keyword?keyword=&request_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"incident.relate.ci.by.keyword"
+							],
+							"query": [
+								{
+									"key": "exact_match",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "keyword",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "request_id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Relates a request to every CI that matches a certain keyword.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#incidentrelatecibykeyword-POST](https://releases.invgate.com/service-desk/api/#incidentrelatecibykeyword-POST)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Tickets (not just \"_Incidents_\" in the literal way)."
+		},
+		{
+			"name": "Knowledge Base",
+			"item": [
+				{
+					"name": "/kb.articles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "author_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "is_private",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "content",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "title",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "attachments[]",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/kb.articles",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"kb.articles"
+							]
+						},
+						"description": "Creates an article.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#kbarticles-POST](https://releases.invgate.com/service-desk/api/#kbarticles-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/kb.articles.attachments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "author_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "article_id",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "attachments[]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/kb.articles.attachments",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"kb.articles.attachments"
+							]
+						},
+						"description": "Adds attachments to an article.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#kbarticlesattachments-POST](https://releases.invgate.com/service-desk/api/#kbarticlesattachments-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/kb.articles.by.keywords",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/kb.articles.by.keywords?keywords=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"kb.articles.by.keywords"
+							],
+							"query": [
+								{
+									"key": "keywords",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "min_search_scoring",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Searches for articles by keywords.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#kbarticlesbykeywords-GET](https://releases.invgate.com/service-desk/api/#kbarticlesbykeywords-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/kb.categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/kb.categories",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"kb.categories"
+							]
+						},
+						"description": "Lists all the Knowledge Base categories.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#kbcategories-GET](https://releases.invgate.com/service-desk/api/#kbcategories-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Knowledge Base."
+		},
+		{
+			"name": "Locations",
+			"item": [
+				{
+					"name": "/locations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations?name=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"locations"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Creates a location.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locations-POST](https://releases.invgate.com/service-desk/api/#locations-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/locations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"locations"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Returns all active locations, or one in particular.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locations-GET](https://releases.invgate.com/service-desk/api/#locations-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/locations.users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations.users?users[]=&id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"locations.users"
+							],
+							"query": [
+								{
+									"key": "users[]",
+									"value": "",
+									"description": "Required"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Adds users to a location.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locationsusers-POST](https://releases.invgate.com/service-desk/api/#locationsusers-POST)"
+					},
+					"response": []
+				},
+				{
+					"name": "/locations.users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/locations.users?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"locations.users"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Lists the members of a location.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#locationsusers-GET](https://releases.invgate.com/service-desk/api/#locationsusers-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Knowledge Base."
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/user.by",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/user.by",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"user.by"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "",
+									"description": "Required (at least one)",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "",
+									"description": "Required (at least one)",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves the user matching the username or email and displays some basic information about the user. At least one of the input parameters is required.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#userby-GET](https://releases.invgate.com/service-desk/api/#userby-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/users",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"users"
+							],
+							"query": [
+								{
+									"key": "ids[]",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves users and displays some basic information about them. It's possible to specify an array of user IDs in order to filter specific users; otherwise, it retrieves all users.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#users-GET](https://releases.invgate.com/service-desk/api/#users-GET)"
+					},
+					"response": []
+				},
+				{
+					"name": "/users.groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/users.groups?ids[]=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"users.groups"
+							],
+							"query": [
+								{
+									"key": "ids[]",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Returns the user's groups, companies, helpdesks and locations.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#usersgroups-GET](https://releases.invgate.com/service-desk/api/#usersgroups-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Users."
+		},
+		{
+			"name": "Workflows",
+			"item": [
+				{
+					"name": "/wf.deploy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/wf.deploy?workflow_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"wf.deploy"
+							],
+							"query": [
+								{
+									"key": "workflow_id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Deploys a workflow.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#wfdeploy-PUT](https://releases.invgate.com/service-desk/api/#wfdeploy-PUT)"
+					},
+					"response": []
+				},
+				{
+					"name": "/wf.initialfields.by.category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/wf.initialfields.by.category?category_id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"wf.initialfields.by.category"
+							],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						},
+						"description": "Lists the initial fields needed to create a request from a workflow.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#wfinitialfieldsbycategory-GET](https://releases.invgate.com/service-desk/api/#wfinitialfieldsbycategory-GET)"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests related to Workflows."
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{SD API Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{SD API User}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}

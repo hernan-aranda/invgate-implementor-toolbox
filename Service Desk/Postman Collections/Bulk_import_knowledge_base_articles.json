@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "abc3e97a-b8ba-4c77-89c4-a8a43e9ca85b",
+		"name": "[SD] Bulk import knowledge base articles",
+		"description": "This collection will import knowledge base articles from a .csv\n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Template\n\n| **Column** | **Description** |\n| --- | --- |\n| articleCategoryId | Required. ID of the category where the article will be stored. |\n| articleDescription | Optional. A short description about the topic in plain text. |\n| articleIsPrivate | Optional and binary. If empty or \"_0_\", the article will be created as public. If \"_1_\", the article will be created as private. |\n| articleTitle | Required. The title of the article in plan text. |\n| articleContent | Required. The content of the article in plain text. You can include HTML tags too. |\n| articleAuthorId | Required. ID of the user that will be used as author. |\n| articleAttachments | Optional. Path to a local file that will be attached to the article. The path should start with \"_/_\" and include file extension, for example \"_/C:/path/to/file.png_\". This collection can handle a single attachment per article. |\n\nSource: [https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=455452332](https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=455452332)\n\n# Execution\n\n1. Set and select the enviroment, or replace the enviroment variables with your constants\n2. Create the .csv file\n3. Run the collection using the .csv file\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14766098"
+	},
+	"item": [
+		{
+			"name": "Create article",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"if ( pm.iterationData.get(\"articleAttachments\") === '' ) {\r",
+							"    pm.request.body.formdata.remove(\"attachments[]\");\r",
+							"}\r",
+							"\r",
+							"if ( pm.iterationData.get(\"articleDescription\") === '' ) {\r",
+							"    pm.request.body.formdata.remove(\"description\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "author_id",
+							"value": "{{articleAuthorId}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "category_id",
+							"value": "{{articleCategoryId}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "is_private",
+							"value": "{{articleIsPrivate}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "content",
+							"value": "{{articleContent}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "title",
+							"value": "{{articleTitle}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "description",
+							"value": "{{articleDescription}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "attachments[]",
+							"description": "Variable. You get this value from de .csv",
+							"type": "file",
+							"src": "{{articleAttachments}}"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/kb.articles",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"kb.articles"
+					]
+				},
+				"description": "Creates an article in the Knowledge Base. The request can handle a single attachment.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#kbarticles-POST](https://releases.invgate.com/service-desk/api/#kbarticles-POST)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{SD API Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{SD API User}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
