@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "2dfbe9c1-a04e-4e87-8c8d-b7d773a36ce3",
+		"name": "[SD] Bulk import companies",
+		"description": "This collection will import companies to Service Desk using values from a .csv\n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Template\n\n| **Column** | **Description** |\n| --- | --- |\n| companyName | Required. Name of the company to be created. |\n\nSource: [https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=1438272054](https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=1438272054)\n\n# Execution\n\n1. Set and select the enviroment, or replace the enviroment variables with your constants\n2. Create the .csv file\n3. Run the collection using the .csv file\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f884f89-9b7c-465c-9cb6-7317d50d1297",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "937b912b-f560-45ad-858d-ffffb9c9d53e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "ff0da140-3c52-4ef1-bbef-373776d39c0c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/companies?name={{companyName}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{companyName}}",
+							"description": "Variable. You get this value from de .csv"
+						}
+					]
+				},
+				"description": "Creates the company.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#companies-POST](https://releases.invgate.com/service-desk/api/#companies-POST)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{SD API Password}}",
+			"username": "{{SD API User}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d53d241b-35cd-4ddf-a254-bb8daf98771c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2a547173-b7ce-4450-a2fa-c7a11459e87a",
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
