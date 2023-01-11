@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "ade7361a-26c4-41dc-a737-a6ecae661be8",
+		"name": "[SD] Bulk import custom field values (list)",
+		"description": "This collection will import values from a .csv to a list type custom field\n\nAuthor: Hernán Aranda (a.k.a. Hernium)\n\n# Prerequisites\n\nCheck this article to prepare everything you need: [https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources](https://github.com/hernan-aranda/invgate-implementor-toolbox#how-to-use-this-resources)\n\n# Template\n\n| **Column** | **Description** |\n| --- | --- |\n| itemName | Required. Name of the list item to be created. |\n\nSource: [https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=0](https://docs.google.com/spreadsheets/d/10cN2GcwdoPv8x8-5K6YKi1zdxbbaGsW_IWTTL9CuGnY/view#gid=0)\n\n# Execution\n\n1. Create list type custom field and get the ID\n2. Set and select the enviroment, or replace the enviroment variables with your constants\n3. Set the collection variable \"_fieldId_\" with the the custom field ID\n4. Create the .csv file\n5. Run the collection using the .csv file\n    \n\n# Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f884f89-9b7c-465c-9cb6-7317d50d1297",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "937b912b-f560-45ad-858d-ffffb9c9d53e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "522021b8-6c09-4ed6-8d8b-a543a07878f6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/cf.field.options.list?type=key-value&key_values[{{$randomAlphaNumeric}}{{$timestamp}}]={{itemName}}&uid={{fieldId}}",
+					"protocol": "{{SD Protocol}}",
+					"host": [
+						"{{SD Instance}}"
+					],
+					"path": [
+						"api",
+						"{{SD API Version}}",
+						"cf.field.options.list"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "key-value",
+							"description": "Constant. This is the only possible value for now"
+						},
+						{
+							"key": "key_values[{{$randomAlphaNumeric}}{{$timestamp}}]",
+							"value": "{{itemName}}",
+							"description": "Variable. You get this value from de .csv"
+						},
+						{
+							"key": "uid",
+							"value": "{{fieldId}}",
+							"description": "Constant. Set this fieldId in the Collection Variables tab"
+						}
+					]
+				},
+				"description": "Creates the item in the list.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#cffieldoptionslist-POST](https://releases.invgate.com/service-desk/api/#cffieldoptionslist-POST)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{SD API Password}}",
+			"username": "{{SD API User}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e5bc9f59-bd2f-41cc-8661-0ee8801bf6b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7c3eb829-5b2b-48db-a39d-a8d9ab4e9d93",
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"// If we got a 200, the request was executed succesfully",
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1a7f2d61-65fd-46c5-a0e3-0c394497dea5",
+			"key": "fieldId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
