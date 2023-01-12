@@ -33,7 +33,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/users?id={{userId}}",
+					"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/user?id={{userId}}",
 					"protocol": "{{SD Protocol}}",
 					"host": [
 						"{{SD Instance}}"
@@ -41,7 +41,7 @@
 					"path": [
 						"api",
 						"{{SD API Version}}",
-						"users"
+						"user"
 					],
 					"query": [
 						{
