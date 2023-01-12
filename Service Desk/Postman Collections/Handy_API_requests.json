@@ -2449,6 +2449,53 @@
 			"name": "Users",
 			"item": [
 				{
+					"name": "/user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/user?id=552",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "552"
+								}
+							]
+						},
+						"description": "Deletes a user.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#user-DELETE](https://releases.invgate.com/service-desk/api/#user-DELETE)"
+					},
+					"response": []
+				},
+				{
 					"name": "/user.by",
 					"event": [
 						{
@@ -2548,53 +2595,6 @@
 							]
 						},
 						"description": "Retrieves users and displays some basic information about them. It's possible to specify an array of user IDs in order to filter specific users; otherwise, it retrieves all users.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#users-GET](https://releases.invgate.com/service-desk/api/#users-GET)"
-					},
-					"response": []
-				},
-				{
-					"name": "/users",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/users?id=",
-							"protocol": "{{SD Protocol}}",
-							"host": [
-								"{{SD Instance}}"
-							],
-							"path": [
-								"api",
-								"{{SD API Version}}",
-								"users"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						},
-						"description": "Deletes a user.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#user-DELETE](https://releases.invgate.com/service-desk/api/#user-DELETE)"
 					},
 					"response": []
 				},
