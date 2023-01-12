@@ -2552,6 +2552,53 @@
 					"response": []
 				},
 				{
+					"name": "/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{SD Protocol}}://{{SD Instance}}/api/{{SD API Version}}/users?id=",
+							"protocol": "{{SD Protocol}}",
+							"host": [
+								"{{SD Instance}}"
+							],
+							"path": [
+								"api",
+								"{{SD API Version}}",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Deletes a user.\n\nEndpoint doc.: [https://releases.invgate.com/service-desk/api/#user-DELETE](https://releases.invgate.com/service-desk/api/#user-DELETE)"
+					},
+					"response": []
+				},
+				{
 					"name": "/users.groups",
 					"event": [
 						{
